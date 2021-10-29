@@ -1,0 +1,225 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts }
+ \usepackage[margin=1in]{geometry}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+  ]{biblatex}
+\addbibresource{bib.bib}
+ \usepackage[margin=1in]{geometry}
+\usepackage[doublespacing]{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multirow, array}
+\usepackage{amssymb}
+\newcommand*{\titlefoot}{$\dagger$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\newtheorem{definition}{Definition}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\begin{document}
+\title{Week 2 Recommended Problem Set}
+\author{Jacob Kohlhepp}
+\date{\today}
+
+\maketitle
+
+\section{Static Game Theory}
+Because static game theory constitutes the bulk of the content for the midterm, I have provided more problems then normal for this section. Do not feel like you need to do all of them. Think of this PS as a study guide for the midterm.
+
+\begin{enumerate}
+    \item \textbf{Tragedy of the Commons: Practicing Continuous Strategy Game Theory.} This problem follows example 8.4 from N\&S. Suppose there are two shepherds who let their sheep feed on the same patch of grace called the ``commons." The quantity of wool and cheese produced by each sheep depends on how many other sheep are competing in the commons. Specifically, the amount of revenue per sheep is $120-q_1-q_2$ where $q_i$ is the amount of sheep being raised by shepherd $i$. The cost of raising sheep is 0.
+    \begin{enumerate}
+        \item[a.] Write down the utility-maximization problem for shepherd $i$.
+        
+        \vspace{4cm}
+        
+        \item[b.] Take the FOC of the profit equation. Identify the part of the FOC that represents the externality of one farmer on another. Solve for the best response function for $q_i$ as a function of $q_{-i}$ (the other shepherd's choice).
+        
+        \vspace{4cm}
+        
+        \item[c.] The game is symmetric (both players have the same payoffs). Thus best-response functions are the same. Find a Nash Equilibrium of the game.
+        
+        \vspace{6cm}
+        
+        \item[d.] Bonus: Prove that this NE is unique (the only Nash Equilibrium).
+        
+        \vspace{5cm}
+        
+        
+        \item[e.] Now suppose there is a social planner that maximizes total surplus (the sum of both shepherd's profit). The planner controls both $q_1, q_2$. Find the values the social planner would choose\footnote{There may be more than one (or infinitely many) values.}. Show that one of the values is a Pareto improvement over the equilibrium actions (both players are better off than in NE).
+        
+        \vspace{6cm}
+        
+        
+        \item[f.] Is this a positive or negative externality? What other situations does this model?
+        
+        \vspace{4cm}
+        
+        \end{enumerate}
+        \item \textbf{The Stag Hunt.} Consider the following game, where two hunters are deciding whether to hunt a stag together or a rabbit alone:
+                    \begin{table}[H]
+    \begin{tabular}{cc|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Player $2$}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$Stag$}  & \multicolumn{1}{c}{$Rabbit$} \\\cline{3-4}
+      \multirow{3}*{Player $1$}  & $Stag$ & $(2,2)$ & $(0,1)$ \\\cline{3-4}
+      & $Rabbit$ & $(1,0)$ & $(1,1)$ \\\cline{3-4}
+    \end{tabular}
+      \end{table}
+      \begin{enumerate}
+          \item[a.] Are there any strictly dominant or strictly dominated strategies?
+          
+          \vspace{4cm}
+          
+          \item[b.] Find all pure strategy Nash Equilibria. How do your findings relate to cooperation or coordination?
+          
+          \vspace{6cm}
+          
+          \item[c.] Consider the situation where two consultants must decide whether to learn Excel or R. Excel is bad for teamwork/big projects but is easier to learn. How can you apply the stag hunt game to this situation?
+          
+          \vspace{4cm}
+          
+          \item[d.] Find the mixed strategy Nash Equilibrium. Hint: Assign probability $p$ to P1 playing Stag and $q$ to P2 playing stag, then solve for an indifference condition.
+          
+          \vspace{6cm}
+          
+      \end{enumerate}
+        \item \textbf{3 Action Game.} Consider the following three action game:
+            \begin{table}[H]
+    \begin{tabular}{cc|c|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{3}{c}{Player $2$}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$A$}  & \multicolumn{1}{c}{$B$} & \multicolumn{1}{c}{$C$}\\\cline{3-5}
+      \multirow{3}*{Player $1$}  & $A$ & $(-1,-1)$ & $(-1,0)$  & $(3,0)$ \\\cline{3-5}
+      & $B$ & $(0,-1)$ & $(2,2)$ & $(2,0)$ \\\cline{3-5}
+      & $C$ & $(0,3)$ & $(0,2)$ & $(4,4)$ \\\cline{3-5}
+    \end{tabular}
+      \end{table}
+    \begin{enumerate}
+        \item[a.] Are there any dominant strategies? If so, write them down.
+        
+        \vspace{4cm}
+        
+        \item[b.] Are there any strategies that a player will definitely not play because something else is weakly better for all moves of the other player? In other words, find all dominated strategies of each player.
+        
+        \vspace{4cm}
+        
+        \item[c.] Find all pure strategy Nash Equilibria.
+        
+        \vspace{6cm}
+        
+    \end{enumerate}
+    \item \textbf{Research and Development.} Microsoft (P1) and Google (P2) are deciding whether to invest in the development of algorithms which will improve artificial intelligence. However, because the algorithms are considered basic science, they will not be able to patent the ideas and each company can use the research of the other. The benefits of R\&D also increase when more companies independently pursue the research. Formally, each company chooses a level of R\&D $r_i$ and payoffs are given by:
+    
+    \[u_i(r_i, r_{-i}) = r_i +r_i\cdot r_{-i}-2r_i^2+r_{-i} \]
+    \begin{enumerate}
+        \item[a.] Interpret the payoffs. What does the term $r_i$ represent? What does the term $-2r_i^2$ represent? What does the term $+r_{-i}$ represent? What does the term $r_i\cdot r_{-i}$ represent?
+        
+        \vspace{4cm}
+        
+        \item[b.] Take the first-order condition and set it equal to 0 to derive the best-response function of company $i$.
+        
+        \vspace{4cm}
+        
+        \item[c.] Derive the pure strategy Nash Equilibrium R\&D level.
+        
+        \vspace{6cm}
+        
+        \item[d.] Like with the tragedy of the commons problem, find the level of investment chosen by a social planner that maximizes social surplus. Is this a Pareto improvement?
+        
+        \vspace{6cm}
+        
+        \item[e.] Compare the results from Question 1 to this question. Which represents a positive externality? Which a negative externality? How does the type of externality relate to whether choices are too low or too high relative to the actions chosen by the social planner?
+        
+        \vspace{4cm}
+        
+    \end{enumerate}
+  \item \textbf{Bidding for a Dollar (Hard - it is okay if you cannot solve it).} Consider the following situation. Two players are bidding for a dollar bill, and they value it the same (at \$1). In the auction, each player simultaneously bids a bid $b_i$ and then whoever bids higher gets the dollar bill. If the bids are equal they flip a coin to determine the winner. However, \textbf{both players} pay their bid, even the loser.\footnote{This is a simple all-pay auction.}
+  \begin{enumerate}
+      \item[a.] Show that there are no pure strategy NE. Hint: Suppose each player plays some bid in the range $[0,1]$ then show that for every value there is a profitable deviation.
+      
+      \vspace{4cm}
+      
+      \item[b.] Now suppose player 1 plays a mixed strategy, where they make their bid a uniform random variable between $[0,1]$. What is the profit of Player 2 from playing a pure strategy in response to this mixed strategy?
+      
+      \vspace{4cm}
+      
+      \item[c.]  Suppose Player 2 plays a pure strategy (that is they bid some value $b_2$ for sure). Suppose Player 1 is still playing the same mixed strategy as in b. Is there a profitable deviation for Player 1?
+      
+      \vspace{4cm}
+      
+      \item[d.] Based on c, will player 2 play a mixed or pure strategy in equilibrium? Make an educated guess about what the strategy player 2 plays when player 1 mixes uniformly. Hint: the players have the same payoffs and are the same in every way.
+      
+      \vspace{4cm}
+  \end{enumerate}
+\end{enumerate}
+
+\section{Oligopoly}
+
+\begin{enumerate}
+    \item \textbf{Cournot with Many Firms.} $N$ firms compete in quantities (Cournot competition). Inverse demand is linear and given by $a-Q$ where $Q$ is total production of all firms. Costs are quadratic and given by $c(q)=q^2$.
+    \begin{enumerate}
+        \item[a.] Setup the profit maximization problem of firm $i$ given the quantity choices of all other firms.
+        
+        \vspace{4cm}
+        
+        \item[b.] Derive the best-response function of firm $i$ as a function of  the $N-1$ other firms quantities.
+        
+        \vspace{6cm}
+        
+        \item[c.] Find a pure strategy NE.
+        
+        \vspace{6cm}
+        
+        \item[d.] Derive profit and price of firm $i$ in equilibrium.
+        
+        \vspace{6cm}
+        
+        \item[e.] Find profit, price and quantity under perfect competition (firms take price as fixed).
+        
+        \vspace{6cm}
+        
+     \end{enumerate}
+    \item \textbf{Bertrand with Finite Prices.} Before solving this problem, review the solution to Bertrand competition without product differentiation (see lecture notes). Now, consider a game where two firms compete in prices like before. The only difference is that prices are not continuous. Instead firms must post a price in cents. So the set of actions is $p_i \in \{0, 0.01, 0.02,0.03,...\}$. We will not specify demand. The only thing we assume is that demand decreases with price and $c>0$.
+    
+    For parts a-c, suppose that $c$ can be expressed in terms of cents without fractions. That is $c$ is some number like $1.01$ or $4.00$, etc.
+    
+    \begin{enumerate}
+        \item[a.]  Argue that $p_1=p_2=c$, the typical Bertrand outcome, is an NE of this game.
+        
+        \vspace{4cm}
+        
+        \item[b.] Argue that $p_1=c, p_2>c+0.01$, is not an NE.
+        
+        \vspace{4cm}
+        
+        \item[c.] Argue that playing $p_i<c$ is never part of an NE.
+        
+        \vspace{4cm}
+        \item[d.] Find a pure strategy NE other than the one from a. Is profit 0 in this equilibrium?
+       
+       \vspace{4cm}
+       
+       Suppose $c$ is in terms of fractions of a cent, meaning that $0.01K<c<0.01(K+1)$ for some integer $K$ that is not 0. For example, $K$ could be $1.005$ or $100.009$, etc.
+       
+        \item[e.] Find an NE.
+        
+        \vspace{6cm}
+    \end{enumerate}
+\end{enumerate}
+
+Solutions will be posted at the beginning of the next week!
+
+
+
+
+\end{document}

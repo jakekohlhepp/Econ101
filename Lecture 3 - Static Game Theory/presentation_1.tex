@@ -1,0 +1,435 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{threeparttable}
+\usepackage{lscape}
+\usepackage{import}
+\usepackage{amsmath}
+\usepackage{csvsimple}
+\usepackage{siunitx}
+\usepackage{subfigure}
+\usepackage{filecontents}
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\usepackage{appendixnumberbeamer}
+\usepackage{float}
+\usepackage{amsmath}  
+\usepackage{tikz,pgfplots}
+\usepackage{tkz-fct}
+\usepackage{amsthm}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+\newcommand{\vertLineFromPoint}[1]{
+  \draw[dashed] 
+  (#1) -- (#1|-{rel axis cs:0,0})
+}
+\newcommand{\horLineFromPoint}[1]{
+  \draw[dashed] 
+  (#1) -- (#1-|{rel axis cs:0,0})
+}
+\mode<presentation> {
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes} -
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen} -
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester} -
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+\setbeamertemplate{footline}[frame number] % To replace the footer line in all slides with a simple slide count uncomment this line
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+  \setbeamertemplate{enumerate items}[default]
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+%\usepackage {tikz}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{definition*}{Definition}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newtheorem*{assumption}{Assumption}
+\usetikzlibrary {positioning}
+%\usepackage {xcolor}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Game Theory]{Lecture 3: Static Game Theory} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Jacob Kohlhepp} % Your name
+\institute[UCLA] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Econ 101 \\ % Your institution for the title page
+\medskip
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{wideitemize}
+    \item For the rest of this class, we will study the \textbf{strategic interactions} of economic actors.
+    \item To do this we need a new tool.
+    \item This new tool is called \textbf{game theory.}
+\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{What is Game Theory?}
+\begin{definition}
+\textbf{Game theory} is the study of mathematical models of strategic interaction among rational decision-makers.\footnote{Myerson (1991)}
+\end{definition}
+\begin{wideitemize}
+    \item Used in many fields: computer science, economics, political science, psychology.
+    \item Came to exist as a field around 1928.
+    \item Came to prominence in the 1950s with John Nash.
+    \item Became a dominant force in economics by the 1970s.
+    \item 11 game theorists have won Econ. Nobel Prize, including Shapley (UCLA)
+    \item Many legitimate critiques (we will not cover), but still very useful tool.
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Game Theory in This Class}
+\begin{wideitemize}
+    \item This lecture will cover static game theory: games where actions occur simultaneously in one period.
+    \item In a few weeks we will cover dynamic game theory: games where actions can occur sequentially.
+    \item The main application of both tools will be \textbf{oligopoly games}.
+    \item However the concepts themselves are fair game for the final/midterm.
+    \item For example, I may ask you to solve a game that is not oligopoly using Nash Equilibrium/dominant strategies/etc.
+\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{Defining a Game}
+A game consists of a list of players, their possible strategies, and the resulting payoffs.
+\begin{wideitemize}
+    \item \textbf{Players.} A set of decision-makers, assumed to be rational. Indexed by $i=1,...,n$. Often we call the set of players which are not $i$ as $-i$.
+    \item \textbf{Strategies.} The set of ``courses of action" available to each player. Denote each strategy as $s_i$, the full set as $S_i$. Denote $s_{-i}$ as the strategies of all players but $i$.
+    \begin{wideitemize}
+        \item When the game is static this is equivalent to actions.
+        \item When the game is not static players may take different actions based on the past actions of others.
+    \end{wideitemize}
+    \item \textbf{Payoffs.} The utility obtained by all players given the chosen strategies. Denoted by a function $u_i(s_1,...,s_n)$ which maps strategies to a number.
+\end{wideitemize}
+    
+\end{frame}
+\begin{frame}{Example: The Prisoner's Dilemma}
+We now describe one of the most famous games in game theory. Tell story.
+\begin{wideitemize}
+    \item \textbf{Players.} Two players, $1,2$.
+    \item \textbf{Strategies.} $S_i=\{silent,betray\}$. Each player can either stay silent or betray the other.
+    \item \textbf{Payoffs.} 
+    \[u_i=\begin{cases} 1 \text{ if } s_i=s_{-i}=silent\\
+    3 \text{ if } s_i=betray, \, s_{-i}=silent\\
+    0 \text{ if } s_i=silent, \, s_{-i}=betray\\
+    1/2 \text{ if } s_i=s_{-i}=betray\\
+    \end{cases}\]
+\end{wideitemize}
+
+Note: we can usually apply many interpretations to the same game.
+\end{frame}
+
+\begin{frame}{Example: The Prisoner's Dilemma}
+We can summarize all of this in the normal-form of the game (fill in):
+
+\vspace{6cm}
+\end{frame}
+
+\begin{frame}{Solving the Game: Best Response}
+\begin{wideitemize}
+    \item We can now describe or write down a game.
+    \item To understand what is likely to happen when rational players play the game, we need some more concepts.
+    \item First idea: What is the best thing for a player to do if that player \textbf{knows} the strategy of the other player?
+    \begin{definition}
+Strategy $s_i$ is a \textbf{best-response} for player $i$ to other players strategies $s_{-i}$ if:
+\[u_i(s_i, s_{-i}) \geq u_i(s_i', s_{-i}) \text{ for all } s_i' \in S_i \]
+
+\end{definition}
+\item In words: a best-response is a utility maximizing action given a strategy of others.
+\item We denote a best response to the strategy of others $BR_i(s_{-i})$.
+\end{wideitemize}
+
+
+\end{frame}
+
+\begin{frame}{Example: The Prisoner's Dilemma}
+Let's find the best-responses in the prisoner's dilemma (fill in)
+
+\vspace{6cm}
+
+It is often helpful to underline the best-response of each player to each other player's action.
+\end{frame}
+
+\begin{frame}{Solving the Game: Dominant Strategy}
+\begin{wideitemize}
+    \item We want to understand what strategies players are \textbf{likely} to play.
+    \item We start with a very strong concept called a dominant strategy.
+    \begin{definition}
+Strategy $s_i$ is a \textbf{dominant strategy} for player $i$ if it is a best-response to all possible combinations of strategies of others.
+
+\end{definition}
+\item In words: an action/strategy is dominant if it is best regardless of what others do.
+\item Issue: there might not be a dominant strategy.
+\item If one does exist, we sense people are likely to play it.
+\item Closely related concept: dominated strategy. This is a strategy which yields a lower payoff for every strategy of others than another strategy.
+\end{wideitemize}
+
+
+\end{frame}
+
+\begin{frame}{Example: The Prisoner's Dilemma}
+Let's find the dominant strategy of each player in the prisoner's dilemma (fill in). 
+
+\vspace{6cm}
+
+
+\end{frame}
+
+\begin{frame}{Solving the Game: Nash Equilibrium}
+\begin{wideitemize}
+    \item We want to understand what outcomes are likely to occur.
+    \item We now use a concept of equilibrium, developed by Nash.
+    \item This will be the main concept we use in this class for solving static games.
+    \begin{definition}
+A \textbf{Nash equilibrium} is a strategy for every player $(s_1^*,...,s_n^*)$ such that for each player $i=1,2,..,n$ $s_i^*$ is a best-response to the strategies of others $s_{-i}^*$
+
+\end{definition}
+\item In words: everyone is playing a strategy which is a best-response to everyone else's strategy.
+\item Intuition: if we gave any individual player the option to deviate while holding everyone else's action fixed, no one would deviate.
+\end{wideitemize}
+
+
+\end{frame}
+
+\begin{frame}{Example: The Prisoner's Dilemma}
+Let's find a Nash Equilibrium in the prisoner's dilemma (fill in).
+
+
+\vspace{6cm}
+
+\end{frame}
+
+\begin{frame}{Comments on Nash Equilibrium}
+\begin{wideitemize}
+    \item With finite players and finite actions, Nash proved that every game has at least one Nash equilibrium.
+    \item However sometimes the only NE is in mixed strategies (more on this next).
+    \item If there is a dominant strategy for a player, it must be part of the NE.
+    \item If every player has a dominant strategy, then there is a unique Nash Equilibrium.
+    %\item Actually if we iteratively remove strictly dominated strategies and we find a unique strategy at the end this is the unique Nash Equilibrium. 
+
+\end{wideitemize}
+
+
+\end{frame}
+
+\begin{frame}{New Example: Penalty Kick}
+Consider the following situation:
+\begin{wideitemize}
+    \item \textbf{Players:} Goalkeeper trying to defend goal, kicker trying to score.
+    \item \textbf{Actions:} $S_g=\{kick left, kick right\}$, $S_k=\{dive left, dive right\}$.
+    \item \textbf{Payoffs:} Goalkeeper gets 1 if dives same way as kick, 0 if not. Kicker gets 1 if kicks the way the goalkeeper does not dive, 0 if not.
+    
+\end{wideitemize}
+
+Write down the normal form of this game with payoffs yourself. Check for a Nash Equilibrium in pure strategies.
+
+\end{frame}
+
+\begin{frame}{Pure Strategy Nash Equilibrium of Penalty Kick Game}
+
+(fill in) 
+
+\vspace{6cm}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Solving a Game: Mixed Nash Equilibrium}
+\begin{wideitemize}
+    \item We observe that in real soccer games the goalkeeper must essentially try and predict which way the ball gets kicked.
+    \item Knowing this, kickers tend to randomize. If they are predictable, this will make them score less.
+    \item This is a mixed strategy Nash Equilibrium: players are playing random combinations of pure strategies. Example: $1/3$ left, $2/3$ right.
+    \begin{definition}
+    A \textbf{mixed strategy} is a probability distribution over the possible actions.
+    \end{definition}
+    \item In words: Mixed strategies assign probabilities to each action. A pure strategy is just a mixed strategy where one action has probability 1 and all others have probability 0.
+    \item A \textbf{mixed strategy Nash Equilibrium} is then an NE where players are playing mixed strategies (probability not 1 or 0 for some actions). 
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{New Example: Penalty Kick}
+
+Let's find the mixed strategy Nash Equilibrium of the penalty kick game. See handwritten notes. Please take it easy on yourself if this is hard (fill in).
+
+\vspace{5cm}
+
+\textbf{Hint:} A trick to find mixed NE is that when players are playing strictly mixed strategies players must be indifferent between each pure action. This gives an \textbf{indifference condition} for each player which we can use to solve for the probabilities.
+\end{frame}
+
+
+\begin{frame}{Continuous Actions}
+
+\begin{wideitemize}
+    \item So far we have focuses on discrete actions.
+    \item Often we are concerned with continuous choices, like setting prices and quantities.
+    \item Most of the same concepts apply to continuous actions, we just need to use calculus to get best-responses.
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Example: Lawn Maintenance (Positive Externalities)}
+\begin{wideitemize}
+    \item \textbf{Players:} 2 neighbors ($i=1,2$)
+    \item \textbf{Actions:} Number of hours to spend on lawn maintenance: $l_i\geq 0$. Note this is a continuous choice, so there are infinite possible strategies.
+    \item \textbf{Payoffs:} The benefit per hour is given by:
+    \[10-l_i + \frac{l_{-i}}{2}\]
+    the cost is 4 per hour.
+\end{wideitemize}
+
+\hfill Source: N\&S 8.4
+
+Write the complete payoff function yourself (fill in).
+
+\vspace{2cm}
+\end{frame}
+
+\begin{frame}{Solving Lawn Maintenance}
+We now find the best-response functions and the Nash equilibrium (fill in).
+
+\vspace{6cm}
+
+\end{frame}
+\begin{frame}{Interpretation of Lawn Maintenance game}
+
+\begin{wideitemize}
+    \item Question: Is the Nash Equilibrium socially optimal or Pareto efficient? Equivalently: is there a number of lawn maintenance hours that would leave both strictly better off?
+    \item The answer is yes. But how do we show it formally?
+    \item One way is to maximize the sum of their utilities.
+    \item This is equivalent to asking what lawn maintenance hours a benevolent social planner would choose, where benevolent is one who cares about the sum of utility.
+
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Maximizing the Sum of Utility: A Benevolent Social Planner}
+
+To implement this, we solve:
+\[\max_{l_1, l_2} u_1(l_1, l_2) + u_2(l_2, l_1) = \max_{l_1, l_2}(10-l_1 + \frac{l_{2}}{2})l_1 - 4l_1 + (10-l_2 + \frac{l_{1}}{2})l_2 - 4l_2 \]
+
+Call total utility $U$. Then take FOCs:
+\[\frac{\partial U}{\partial l_1} = (10-l_1 + \frac{l_{2}}{2}) -l_1 -4 +l_2/2 =0 \]
+
+\[\frac{\partial U}{\partial l_2} = (10-l_2 + \frac{l_{1}}{2}) -l_2 -4 +l_1/2 =0 \]
+
+Notice these FOCs account for the externality!
+\end{frame}
+
+\begin{frame}{Maximizing the Sum of Utility: A Benevolent Social Planner}
+
+Continuing the work, the FOCs can be re-written as:
+\[(6 + l_2)/2 =l_1 \]
+\[(6 + l_1)/2 =l_2 \]
+
+Which we can solve to find:
+\[l_1^* = \bigg ( 6 + (6 + l_1^*)/2 \bigg )/2 \implies l_1^* = 6\]
+By symmetry:
+\[l_2^* = 6\]
+
+This is a pareto improvement, because $u_1(6,6) = u_2(6,6)=18$ which is greater than $u_1(4,4) = u_2(4,4)=16$. So it is a strict Pareto improvement over the Nash equilibrium!
+
+
+\end{frame}
+\begin{frame}{Game Theory Concepts To Know for the Midterm/Final}
+
+\begin{wideitemize}
+    \item Dominant Strategies/Dominated Strategy
+    \item Best-Response
+    \item Nash Equilibrium/Mixed NE
+    \item Continuous Action Best-Response/Nash Equilibrium
+\end{wideitemize}
+    
+\end{frame}
+
+\end{document}
+

@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts }
+ \usepackage[margin=1in]{geometry}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+  ]{biblatex}
+\addbibresource{bib.bib}
+ \usepackage[margin=1in]{geometry}
+\usepackage[doublespacing]{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multirow, array}
+\usepackage{amssymb}
+\newcommand*{\titlefoot}{$\dagger$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\newtheorem{definition}{Definition}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\begin{document}
+\title{Week 4 Recommended Problem Set}
+\author{Jacob Kohlhepp}
+\date{\today}
+
+\maketitle
+
+\section{Infinitely Repeated Games}
+
+\begin{enumerate}
+    \item \textbf{Tacit Collusion: Repeated Bertrand.} In class we studied repeated Cournot (quantity competition) and showed how firms could form a cartel through tacit collusion. We will repeat that exercise here but with price competition. The main idea is the same, however we will see that as with the static case, repeated price competition is different than repeated quantity competition.
+    
+    $N$ firms operate in a market, and they compete in prices infinitely many times. They all have the same discount factor $\delta$ and all have the same constant (per unit) marginal cost of $c>0$. Each period they play a Bertrand game where every firm announces its price simultaneously. As normal, demand is split evenly for tied prices, otherwise all demand goes to the lowest priced firm. Given the lowest price on the market ($P$), total demand is given by:
+    \[Q= a - b P \]
+    \begin{enumerate}
+        \item[a.] Derive the NE of the static Bertrand game. Derive the single period NE profit and call it $\pi_{NE}$.
+        \item[b.] Suppose all the firms acted as a single monopolist (a cartel). Derive single period per-firm profit if all firms price at the monopoly price and split the profit evenly. Call it $\pi_{cartel}$. Compute profit when $a=11$, $b=1$, $c=1$.
+        \item[c.] Describe a grim trigger strategy in this situation. Hint: use part a and b.
+        \item[d.] Suppose the firms use grim trigger to try and achieve cartel profit from part b. Assume that $a=11$, $b=1$, $c=1$. What two conditions must be satisfied for the firms to collude and achieve cartel profit? Is one condition always satisfied for all values of $N, \delta$? Interpret the condition(s) that are meaningful.\footnote{In Bertrand, the best deviation is often to just slightly undercut the price. This yields profit which is slightly less then total cartel profit. For the purposes of the inequalities you can assume deviation yields exactly cartel profit. If this is confusing (it confuses me sometimes) post about it on the forum.}
+        \item[e.] Suppose demand becomes more elastic (in other words, suppose $b$ increases from $1$). Does this change the conditions under which collusion is possible?
+        \end{enumerate}
+\end{enumerate}
+
+\section{Incomplete Information}
+\begin{enumerate}
+    \item \textbf{eBay Adertising.} Suppose there is a seller with an item that is either high quality (value $H$) with probability $p$ or low quality (value $L$) with probability $1-p$. Seller profit is the sale price (there is no production cost). In the game, the seller first advertises the quality (either H or L, seller can lie) then the bidders bid after seeing the ad. So if bidders think the item is for sure high quality they bid H. If they think it is low they bid L. Throughout assume there are some large number of bidders, and that because of competition among bidders, the sale price is always exactly the expected value of the item given beliefs. Throughout we are considering perfect bayesian equilibria.
+    \begin{enumerate}
+        \item[a.] First assume the seller always says the item is high quality. In equilibrium, bidders know this. Derive their belief about quality when they observe the ad. Hint: Does the ad matter?
+        \item[b.] Given this, what do the bidders bid? Remember they bid their expectation (based on beliefs).
+        \item[c.] One thing is missing from this equilibrium: bidder beliefs if the ad says low quality. This never happens in equilibrium (because seller always says H), but we need to specify something. What is a belief about quality given the ad says low quality that makes the seller want to follow through on always saying high quality? Hint: if bidders think low means high, what do they bid? if bidders think low means low, what do they bid?
+        \item[d.] Now suppose the seller always tells the truth, and advertises H when high and L when low. What is bidder belief about quality after seeing the two types of ads?
+        \item[e.] Given this, what do bidders bid? Hint: Bidders should be sure about quality now.
+        \item[f.] Now think about the seller. Will the seller want to tell the truth? Can this ever be a PBE? Hint: think about what happens when quality is low.
+        
+        Now suppose that eBay lowers the rating of sellers who say H when the quality is low, which hurts future business. This reduces utility from stating H when quality is low by $c$. This is what is called a signaling cost. In Spence it took the form of education being harder for less analytically-inclined people. We show now that it is necessary to have some sort of cost for a separating equilibrium to occur.
+        
+        \item[g.] Revisit part f. How high does the cost $c$ need to be so that the seller wants to tell the truth? If the cost is this high, state a perfect Bayesian equilibrium (with corresponding beliefs).
+    \end{enumerate}
+\end{enumerate}
+Solutions will be posted at the beginning of the next week!
+
+
+
+
+
+\end{document}

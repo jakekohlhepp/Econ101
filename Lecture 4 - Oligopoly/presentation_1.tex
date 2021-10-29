@@ -1,0 +1,411 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{threeparttable}
+\usepackage{lscape}
+\usepackage{import}
+\usepackage{amsmath}
+\usepackage{csvsimple}
+\usepackage{siunitx}
+\usepackage{subfigure}
+\usepackage{filecontents}
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\usepackage{appendixnumberbeamer}
+\usepackage{float}
+\usepackage{amsmath}  
+\usepackage{tikz,pgfplots}
+\usepackage{tkz-fct}
+\usepackage{amsthm}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+\newcommand{\vertLineFromPoint}[1]{
+  \draw[dashed] 
+  (#1) -- (#1|-{rel axis cs:0,0})
+}
+\newcommand{\horLineFromPoint}[1]{
+  \draw[dashed] 
+  (#1) -- (#1-|{rel axis cs:0,0})
+}
+\mode<presentation> {
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes} -
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen} -
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester} -
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+\setbeamertemplate{footline}[frame number] % To replace the footer line in all slides with a simple slide count uncomment this line
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+  \setbeamertemplate{enumerate items}[default]
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+%\usepackage {tikz}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{definition*}{Definition}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newtheorem*{assumption}{Assumption}
+\usetikzlibrary {positioning}
+%\usepackage {xcolor}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Oligopoly]{Lecture 4: Oligopoly} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Jacob Kohlhepp} % Your name
+\institute[UCLA] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Econ 101 \\ % Your institution for the title page
+\medskip
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{wideitemize}
+    \item We discussed monopoly, which is when one firm has full supply-side market power.
+    \item In Econ 11 we discussed perfect competition, which is where all firms have 0 market power.
+    \item Now we discuss the intermediate case: when a handful of firms have some but not full supply-side market power.
+    \item We will draw on our new tools from static game theory to solve games by finding Nash Equilibria in continuous strategies.
+\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{What is Oligopoly?}
+\begin{definition}
+    An oligopoly is a market with relatively few firms but more than one.\footnote{Source: N\&S Chapter 15}
+\end{definition}
+\begin{wideitemize}
+    \item In other words, not a monopoly but not perfect competition.
+    \item This is more interesting than monopoly, because there is \textbf{strategic interaction}.
+    \item Firms can impact the price, but not fully. They also impose an externality on the profit of other firms.
+    \item \textbf{Example:} Mass media (Disney, Comcast, Viacom, News Corp), Smartphone software (Android, Apple iOS), automakers, airlines.
+    \item A whole sub-field of economics is devoted to the study of strategic firm interaction: \textbf{industrial organization.}
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Road Map}
+This Class:
+\begin{wideitemize}
+    \item Duopoly with price competition (Bertrand)
+    \item Duopoly with quantity competition (Cournot)
+\end{wideitemize}
+Next Class:
+\begin{wideitemize}
+    \item Duopoly with Spatial Competition/Product Differentiation
+\end{wideitemize}
+In a few lectures:
+\begin{wideitemize}
+    \item Repeated Duopoly (Tacit Collusion)
+\end{wideitemize}
+
+    
+\end{frame}
+\begin{frame}{Duopoly with Price Competition (Bertrand)}
+Like in all game theory problems, we layout the game:
+\begin{wideitemize}
+    \item \textbf{Players.} Two identical firms, numbered $1,2$.
+    \item \textbf{Actions.} Firms choose prices \textit{continuously}: $0\leq p_i < \infty$
+    \item \textbf{Payoffs.} 
+    \begin{enumerate}
+        \item Market demand is given by $D(p)$, which we assume slopes down.
+        \item When firms set the same price demand is split evenly.
+        \item When prices are different the lower price gets all demand.
+        \item We can write this mathematically this way:
+        \[D_i(p_i, p_{-i}) = \begin{cases} 0 \text{ if } p_i>p_{-i}\\
+        \frac{1}{2}D(p_i) \text{ if } p_i=p_{-i}\\
+        D(p_i) \text{ if } p_i<p_{-i}
+        \end{cases}\]
+        \item Marginal cost is constant and equal to $c$ (so fixed per unit cost of production).
+    \end{enumerate}
+\end{wideitemize}
+
+    
+\end{frame}
+
+\begin{frame}{Solving Bertrand: Deriving Profit}
+
+\[\Pi_i(p_i, p_{-i}) = \begin{cases} 0 \text{ if } p_i>p_{-i}\\
+        \frac{1}{2}D(p_i) [p_i-c] \text{ if } p_i=p_{-i}\\
+        D(p_i) [p_i-c] \text{ if } p_i<p_{-i}
+        \end{cases}\]
+    
+\end{frame}
+
+\begin{frame}{Solving Bertrand: Nash Equilibrium}
+
+\begin{wideitemize}
+    \item If you read N\&S Ch. 15, it almost seems like the authors guess the equilibrium.
+    \item This is no mistake: sometimes it is easier to guess an equilibrium and then verify it satisfies the NE conditions.
+    \item So we guess: $p_1=p_2=c$ is the only equilibrium.
+    \item To prove this, we need to first show it is an NE. Then we need to show there are no other NE.
+\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{Solving Bertrand: Nash Equilibrium}
+First, we show it is an NE.
+\begin{wideitemize}
+    \item Recall the definition of an NE: every player must have no profitable deviation.
+    \item To prove this is an NE, we just need to check that given the other player is playing $p_{-i}=c$, player $i$ does not gain by playing something other than $p_i=c$.
+    \item First note that when $p_1=p_2=c$ profit is 0 because average cost is equal to average revenue.
+    \item Suppose one player deviates to $p_i<c$ while other stays. Does the deviator gain?
+    \item No: the deviator gets the full market demand, but now price is less than cost, so deviator profit is negative.
+    \item What if one firm deviates to $p_i>c$? Do they gain?
+    \item No: the deviator loses all demand to the other player, and makes 0 profit (the same as not deviating).
+    \item Thus $p-1=p_2=c$ is an NE.
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Solving Bertrand: Nash Equilibrium}
+Second, show it is the unique NE.
+\begin{wideitemize}
+    \item Suppose there is another NE (proof by contradiction).
+    \item For clarity, just assume that the low price firm is 1: $p_1\leq p_2$.
+    \item \textbf{Case 1}: $c>p_1$. In this case, firm 1 is making negative profit. This cannot be an NE because the firm could just set $p_1=c$ and at least make 0 profit.
+    \item \textbf{Case 2}: $c<p_1$. Now firm 1 is making positive profit. But firm 2 is making 0 profit, and firm 2 could deviate to a price between c and $p_1$ and make positive profits.
+    \item \textbf{Case 3}: $c=p_1<p_2$: Now firm 1 earns 0 profit as does firm 2. But firm 1 could slightly raise price and make positive profit.
+    \item Therefore, $p_1=p_2=c$ is the unique Nash Equilibrium!
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Interpreting Bertrand}
+
+\begin{wideitemize}
+    \item What is interesting about the solution $p_1=p_2=c$?\pause
+    \item It is exactly the perfect competition outcome!
+    \item This is the Bertrand paradox: two firms is enough to achieve perfectly competitive prices.
+    \item On the one hand this is general: we did not specify demand, and this is true even with more firms.
+    \item On the other hand it is knife-edge (sensitive). It falls apart when:
+    \begin{enumerate}
+        \item There is product differentiation (next class).
+        \item Prices are discrete (see problem set).
+        \item We switch to quantity competition (next slide).
+    \end{enumerate}
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Duopoly with quantity competition (Cournot)}
+\begin{wideitemize}
+    \item \textbf{Players.} $2$ firms.
+    \item \textbf{Actions.} Firms choose quantities \textit{continuously}: $0\leq q_i < \infty$
+    \item \textbf{Payoffs.} 
+    \begin{enumerate}
+        \item Total market quantity is $Q= \sum_i^2q_i$.
+        \item Inverse demand (price as a function of quantity) is based on total market quantity $P(Q)$.
+        \item Cost of production given by $C_i(q_i)$. Often we will have identical costs so $C_i(q_i)=C(q_i)$.
+        \item Profit will be revenue less costs, like in the monopoly problem.
+    \end{enumerate}
+    \item Exercise: Write down the payoff for firm $i$ from producing quantity $q_i$.\pause
+    \[P(Q)q_i-C_i(q_i)\]
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Solving Cournot}
+
+The general problem (without specify the cost function or the inverse demand) is:
+\[\max_{q_i} P(Q)q_i-C_i(q_i) \]
+
+We take the first-order condition holding fixed the quantity of the other firms:
+
+\[P'(Q)q_i + P(Q)-C'(q_i)=0\]
+
+
+
+Although we specified that $N=2$, this is actually the solution for any number of firms! From this we can derive a best-response function for each firm by solving for $q_i$ as a function of all other firm's quantities.
+
+\end{frame}
+
+\begin{frame}{Solving Cournot: Natural Spring Duopoly}
+
+This example follows Example 15.1 from N\&S Ch. 15.
+\begin{wideitemize}
+    \item Suppose $N=2$.
+    \item Suppose $c_i(q_i)=cq_i$, so cost functions are symmetric.
+    \item Suppose Inverse demand is $P(Q)=a-Q$, which is a linear demand (remember this from monopoly?)
+    \item Suppose the firms compete in quantities. What is the Nash Equilibrium quantities and price?
+\end{wideitemize}
+For the solution, see handwritten notes.
+\end{frame}
+
+\begin{frame}{Adding a Twist: Natural Spring with a Cartel}
+\begin{definition}
+A \textbf{cartel} is an association of firms that works together to keep prices above the competitive level.
+\end{definition}
+\begin{wideitemize}
+    \item What happens in the previous example when we assume the two firms can perfectly cooperate?
+    \item We model perfect cooperation as the two firms acting in unison to maximize total profit.
+    \item Find the quantities that would be produced if the firms could form a cartel.
+    \item \textbf{Challenge (try on your own).} Compare this quantity to the monopoly quantity.
+    \item For the solution see handwritten notes.
+\end{wideitemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Comparing Three First-Order Conditions}
+
+\textbf{Perfect Competition:} The firm acts as if its actions do not impact price.
+\[P(Q)-C_i'(q)=0\]
+
+\textbf{Cournot Oligopoly:} The firm accounts for the fact that it can impact price.
+
+\[P(Q)+P'(Q)q_i -C'(q_i)=0\]
+
+\textbf{Cartel:} The cartel through cooperation has full market power, and accounts for the externality that production of one firm has on the price all other firm's charge.
+\[P(Q)+P'(Q)Q-C_i'(q_i)=0\]
+Profits can be ordered this way:
+\[\pi_{perfect}\leq \pi_{oligpoly}\leq \pi_{cartel}\]
+
+\end{frame}
+
+\begin{frame}{Interpreting Cournot Equilibrium}
+
+\begin{wideitemize}
+    \item For any non-infinite number of firms, Cournot/quantity competition results in a price above perfect competition, and thus more profit for firms than under perfect competition.
+    \item When $n\to \infty$, it can be shown under general conditions that the price converges to the marginal cost.
+    \item As a result, as more firms enter a market, competition increases and we approach perfect competition!
+    \item Showing this is an exercise in the practice problems for this week.
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Discussion of Cournot vs. Bertrand}
+
+\begin{wideitemize}
+    \item In your opinion, do firms compete more in prices or quantities?\pause
+    \item In your opinion, which model seems more realistic in terms of interpretation?\pause
+    \item Ultimately, the stark differences say something about social science.\pause
+    \item Models are tools, but not the truth.\pause
+    
+\end{wideitemize}
+ \vspace{4mm}
+     \begin{quote}
+        ``All models are wrong, but some are useful.''
+        
+        - George Box
+    \end{quote}
+    
+\end{frame}
+\begin{frame}{Concepts for the Midterm}
+The following concepts can potentially be on the midterm:
+\begin{wideitemize}
+    \item Risk and Uncertainty
+    \item Monopoly and Monopsony (if we get to monopsony today)
+    \item Static Game Theory (any problem using the tools we discussed)
+    \item Oligopoly
+\end{wideitemize}
+
+Please submit your practice PDF upload (worth 5 pts) and read the midterm instructions (see week 3). Important instructions:
+
+\begin{enumerate}
+    \item Midterm is open book but not open contact.
+    \item Midterm will be 1 hour.
+    \item Academic dishonesty will not be tolerated.
+    \item If you do not do the practice problems, it is highly unlikely you will do well on the test.
+    \item Grading is either 40-60\% or 100\% final, whichever results in a better score.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Reminder: Lecture After Midterm}
+\centering
+ There will be a 1 hour lecture after the midterm. 
+ \vspace{7mm}
+ 
+ The content of this lecture will NOT be on the midterm.
+ 
+ \vspace{7mm}
+ It will FOR SURE be on the final. Choose attendance strategies accordingly!
+    
+\end{frame}
+
+
+\end{document}
+

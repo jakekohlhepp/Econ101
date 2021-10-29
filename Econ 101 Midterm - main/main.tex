@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts }
+ \usepackage[margin=1in]{geometry}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+  ]{biblatex}
+\addbibresource{bib.bib}
+ \usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+ \linespread{1.25}
+\usepackage{float}
+\usepackage{multirow, array}
+\usepackage{amssymb}
+\newcommand*{\titlefoot}{$\dagger$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\newtheorem{definition}{Definition}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\begin{document}
+\title{Econ 101 Summer Session C Midterm Version 10}
+\author{Instructor: Jacob Kohlhepp}
+\date{\today}
+
+\maketitle
+
+\section{Instructions: Provided Beforehand}
+\begin{itemize}
+    \item You have 60 minutes to complete this midterm.
+    \item Please keep your camera on but audio off.
+    \item The midterm is open note but \textbf{you may not communicate with other classmates or with any sort of online tutoring service.} Doing so is academic dishonesty and will be reported to the dean of students.
+    \item Please either hand write the exam or write using a stylus. Do not type the exam.
+    \item Please show all work. You may leave answers as expressions with fractions or decimals rounded to the 2nd decimal place. If you use a formula from lecture which I said does not need to be derived, you can just write down the formula.
+    \item There is a 10 minute grace period after the exam finishes to submit your PDF to CCLE. Please remain on Zoom with video on while you are submitting your PDF.
+    \item Remember there is a shortened lecture after the exam.
+\end{itemize}
+
+\section{Test Questions: 60 Total Points}
+
+
+\begin{enumerate}
+    \item \textbf{Monopoly.} A monopolist sells to a population of consumers with willingness to pay that is uniform between 5 and 10. That is: \[f(w)=\begin{cases} 1/5 \text{ if } 5 \leq x \leq 10\\
+    0 \text{ else} \end{cases}\]
+    
+    You can assume the amount of consumers is normalized to 1 like in class. The monopolist has constant marginal cost $c$.
+    \pagebreak 
+    \begin{enumerate}
+        \item[a.] Given willingness to pay, show how to derive demand and inverse demand. Hint: you should find that inverse demand is $p(q)=10-5q$. (4 pts)
+        
+        \vspace{6cm}
+        
+        \item[b.] Solve for the monopolist price, quantity and total surplus.(8 pts)
+        
+        \vspace{10cm}
+        
+        \pagebreak
+        
+        \item[c.] Suppose that instead of a monopolist, there is perfect competition. Derive the price, quantity and total surplus under perfect competition. (4 pts)
+
+        \vspace{6cm}
+ 
+        %\item[d.] Compute total surplus under monopoly and perfect competition when $c=2$. Under which type of competition is total surplus higher? Explain why. (4 pts)
+        
+        \vspace{6cm}
+        
+        \item[d.] Suppose the government wants to maximize total surplus and institutes a price ceilingon the monopolist. Which price ceiling should they choose if $c=2$? (4 pts)
+        
+        \vspace{6cm}
+        
+    \end{enumerate}
+    
+   \item \textbf{Static Game Theory.} Consider the following game.
+    
+    \begin{table}[H]
+    \begin{tabular}{cc|c|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{3}{c}{Player $2$}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$A$}  & \multicolumn{1}{c}{$B$} & \multicolumn{1}{c}{$C$}\\\cline{3-5}
+      \multirow{3}*{Player $1$}  & $A$ & $(2,2)$ & $(-1,2)$  & $(-1,2)$ \\\cline{3-5}
+      & $B$ & $(-1,-1)$ & $(1,1)$ & $(-1,2)$ \\\cline{3-5}
+      & $C$ & $(-1,-1)$ & $(-1,2)$ & $(1,1)$ \\\cline{3-5}
+    \end{tabular}
+      \end{table}
+      \begin{enumerate}
+          \item[a.] Are there any dominant strategies? Are there any dominated strategies? (2 pts)
+          
+          \vspace{4cm}
+          
+          
+          \item[b.] Find all pure strategy Nash equilibrium. Write down the strategy pairs for each. (5 pts)
+          
+          \vspace{4cm}
+          
+          
+          \item[c.] Consider the following story: two firms selling the same product are deciding which of three markets to enter. One firm is small, and does not have the resources to achieve sufficient advertisement coverage in any of the markets. If it enters a market alone, it will not be able to sell any product. The other firm is large, and has the resources to advertise alone in all but one market. Which player is the small firm? Explain your reasoning. (4 pts)
+          
+          \vspace{4cm}
+          
+          
+          \item[d.] Continuing with the story. Of the three markets, one is large and requires both firms to enter for either to achieve a profit. The other two are medium, and the larger firm prefers to serve these markets alone while the smaller firm prefers to serve them together. Which letter corresponds to the large market? Which two correspond to the medium? Explain. (4 pts)
+          
+          \vspace{4cm}
+          
+          \item[e.] Find a mixed Nash equilibrium where both firms play A with probability 0.\footnote{When an action is played with probability 0 in a mixed NE, the player should strictly prefer the mixed strategy over that action.} When A is not being played, do both firms want to coordinate their market choice? (5 pts)
+          
+          \vspace{4cm}
+          
+
+      \end{enumerate}
+     
+     \item \textbf{Cournot.} Consider a Cournot duopoly (only two firms) with inverse demand given by $p=2-Q$. The cost function of firm 1 is given by $c_1(q)=\frac{r}{2} \cdot q^2$ and the cost function of firm 2 is given by $c_2(q)=q$.
+     
+     \begin{enumerate}
+         \item[a.]  Give an economic interpretation of the parameter $r$. (2 pts)
+         
+         \vspace{4cm}
+         
+         \item[b.] Setup the profit maximization problem of both firms. Solve for the best-response function of each firm. (7 pts)
+         \vfill 
+         
+         \pagebreak
+         
+         \item[c.] Derive the Nash equilibrium. Compute profit of firm 2 in equilibrium as a function of $r$. (7 pts)
+         
+         \vspace{8cm}
+
+         \item[d.] Suppose initially $r=2$, and firm 1 is considering a production upgrade which has the effect of lowering $r$ to be 1. Suppose firm 2 can engage in corporate sabotage to prevent this upgrade. What is the maximum amount firm 2 is willing to pay for this corporate sabotage? (4 pts)
+         
+        \vfill
+         
+        % \item[e.] Compute consumer surplus as a function of $r$. Assuming $r>0$, is consumer surplus increasing or decreasing in $r$? Given your answer to a, provide an interpretation for this result. (4 pts)
+         
+        % \vspace{4cm}
+         
+         %\item[f.] What is the maximum amount a social planner which maximizes consumer surplus is willing to pay to decrease $r$ from $2$ to $1$?
+         
+        %  \vspace{4cm}
+         
+     \end{enumerate}
+     
+      
+      
+\end{enumerate}
+
+
+
+
+
+
+
+\end{document}

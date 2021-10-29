@@ -1,0 +1,340 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{threeparttable}
+\usepackage{lscape}
+\usepackage{import}
+\usepackage{multirow, array}
+\usepackage{amsmath}
+\usepackage{csvsimple}
+\usepackage{siunitx}
+\usepackage{subfigure}
+\usepackage{filecontents}
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\usepackage{appendixnumberbeamer}
+\usepackage{float}
+\usepackage{amsmath}  
+\usepackage{tikz,pgfplots}
+\usepackage{tkz-fct}
+\usepackage{amsthm}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+\newcommand{\vertLineFromPoint}[1]{
+  \draw[dashed] 
+  (#1) -- (#1|-{rel axis cs:0,0})
+}
+\newcommand{\horLineFromPoint}[1]{
+  \draw[dashed] 
+  (#1) -- (#1-|{rel axis cs:0,0})
+}
+\mode<presentation> {
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes} -
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen} -
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester} -
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+\setbeamertemplate{footline}[frame number] % To replace the footer line in all slides with a simple slide count uncomment this line
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+  \setbeamertemplate{enumerate items}[default]
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+%\usepackage {tikz}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{definition*}{Definition}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newtheorem*{assumption}{Assumption}
+\usetikzlibrary {positioning}
+% macro for inputting terminal nodes
+\newcommand\term[2]{\node[below]at(#1){$#2$};}
+%
+%\usepackage {xcolor}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Asymmetric]{Lecture 9: Asymmetric Information} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Jacob Kohlhepp} % Your name
+\institute[UCLA] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Econ 101 \\ % Your institution for the title page
+\medskip
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{wideitemize}
+    \item Last time: introduction to the study of games with incomplete information.
+    \item Generally we are interested in games where one party knows more then the other.
+    \item Situations that exhibit this property are said to have asymmetric information.
+    \item Asymmetric information leads to a failure of the first welfare theorem: equilibria are often not Pareto efficient.
+    \item \textbf{Hidden Action: } one player can take an action that is unobserved by the other.
+    \begin{wideitemize}
+        \item Example: An employee working remotely can exert more or less effort.
+    \end{wideitemize}
+    \item \textbf{Hidden Type:} one player knows something about the game that the other does not.
+    \begin{wideitemize}
+        \item Example: A used-car salesman knows the true condition of a car.
+    \end{wideitemize}
+\end{wideitemize}
+\end{frame}
+
+\section{Hidden Action}
+
+\begin{frame}{Managers and Shareholders}
+
+\begin{wideitemize}
+    \item One manager and one representative shareholder.
+    \item Profit is random but depends on manager effort (e):$\pi \sim N(e,\sigma^2) $
+    \item Shareholders are risk neutral and their payoff is $\pi $ minus any payments to the manager.
+    \item The manager is risk averse with exponential utility from money (x) given by $ \frac{1-e^{-\theta x}}{\theta} $. Effort has cost $c(e)$ which is increasing and convex.
+    \item Thus overall utility to the manager is:
+    \[U(x,e) = E \bigg [ \frac{1-e^{-\theta x}}{\theta} \bigg ]  - c(e)\]
+    \item If the manager rejects contract both players get 0.
+    \item Payments are always of the form $a+b\cdot x$ where $x$ can be effort or profit or something else.
+    \item Timing: shareholder proposes contract, manager accepts or rejects, manager exerts effort.
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Manager and Shareholders: Asymmetric Information, Hidden Action}
+Before proceeding, let's take a moment to re-write utility without expectations.
+\begin{wideitemize}
+    \item For any fixed $a,b$ the payment to the manager is a random variable:
+    \[a+b\pi = a+bN(e, \sigma^2)=N(a+be, b^2\sigma^2)\]
+    \item Remember lecture 1:  exponential utility, normal RV means utility can be written as mean-variance form:
+    \[E[x] - \theta Var(x)/2\]
+    \item Plug in mean and variance:
+    \[a+be - \theta b^2\sigma^2/2\]
+    \item Remember to subtract the cost of effort:
+    \[U(e)=a+be - \theta b^2\sigma^2/2-c(e)\]
+    \item See handwritten notes for full solution!
+\end{wideitemize}
+\end{frame}
+
+
+\begin{frame}{Manager and Shareholders: Perfect Info, No Hidden Action}
+Suppose effort is perfectly observable and the shareholders can pay the manager based on it instead of based on profit.
+
+\begin{wideitemize}
+    \item Then the shareholders will always pay based on effort NOT profit. (Why?)
+    \item So the payment to the manager is of the form $a+b\cdot e$ (a bonus based on effort).
+    \item There is no uncertainty, so we use SPNE.
+    \item See handwritten notes for solution. \pause 
+    \item Solution:
+    \[c'(e^*)=1\]
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Manager and Shareholders: Asymmetric Information, Hidden Action}
+Now suppose the shareholders only see profit not effort.
+\begin{wideitemize}
+    \item The payment is of the form $a+b\pi $.
+    \item Notice that if $b=0$, $e=0$.
+    \item So to get effort we need positive $b$.
+    \item But positive $b$ imposes risk on a risk averse manager! So there is a tradeoff.
+\end{wideitemize}
+    
+\end{frame}
+
+
+
+\begin{frame}{Manager and Shareholders: Solution}
+\begin{wideitemize}
+    \item The solution with hidden action:
+\[c'(e^{**}) = \frac{1}{1+\theta \sigma^2 c''(e^{**})}\]
+\item Note that $\theta \sigma^2 c''(e^{**})>0$ so $c'(e^**)<1$.
+\item Less effort with hidden action!
+\item We can think of $b$ as the ``power of incentives"
+\item In equilibrium $b^{**}=c'(e^{**})$, so the power of incentives decrease with risk aversion and with variance.
+\item Main interpretation: there is a trade-off between risk and incentives.
+\item Higher $b$ means more effort but also more risk.
+
+\end{wideitemize}
+
+    
+\end{frame}
+
+\begin{frame}{Hidden Action Comments}
+
+\begin{wideitemize}
+    \item The fact that effort is under-provided in equilibrium is an example of market failure when information is asymmetric.
+    \item When risk attitudes cause inefficient effort provision we say there is moral hazard.
+    \item The term moral hazard has a more specific meaning in the insurance context:
+    
+    \begin{definition}
+    \textbf{Morla hazard in insurance } is when an economic actor inefficiently chooses not to mitigate risk because another economic actor bears the cost of that risk.
+    \end{definition}
+    \item  Can you see how health or car insurance could cause this? See the problem set to see this fully worked out!
+    \item We will discuss how this impacted Obamacare next lecture.
+\end{wideitemize}
+    
+\end{frame}
+
+\section{Hidden Type}
+
+\begin{frame}{The Market for Lemons\footnote{Aklerlof, Nobel Prize winner.}}
+
+\begin{wideitemize}
+    \item Car quality $q$ is uniform between $[0,20000]$.
+    \item A buyer who wants to buy a car but only knows the distribution of used car values (not the value of this particular car).
+    \item Buyer utility from a car of quality $q$ is $q+b$ less the price.
+    \item Seller utility from selling a car is the price. Utility from not selling is $q$.
+    \item Consider a sequential game: buyer sets price $p$. Then seller decides whether to sell.
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{The Market for Lemons: Full Information}
+\begin{wideitemize}
+    \item  Suppose before the start of the game quality is fully observed by both buyer and seller.
+    \item What happens?\pause
+    \item Backwards induct: seller sells if $p\geq q$.\pause
+    \item Knowing this, buyer sets minimum price satisfying the inequality, so $p=q$.
+    \item All cars are sold! What is surplus?\pause
+    \item Seller utility is $q$, which is exactly outside option. Buyer utility is the full gains from trade:
+    \[u=q+b-p=b\]
+\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{The Market for Lemons: Hidden Type}
+\begin{wideitemize}
+    \item Suppose now that only the seller knows the quality of the car.
+    \item The buyer only knows the distribution of quality.
+    \item But the buyer knows the seller knows the true quality.
+\end{wideitemize}
+    
+\end{frame}
+
+
+\begin{frame}{The Market for Lemons: Worked Out Solution}
+    \begin{wideitemize}
+        \item Begin by observing that sellers only sell if $p\geq q$.
+        \item So buyer utility from price $p$ is:
+        \[\int^p_0 (q+b-p)\frac{1}{20000}dq + \int_p^{20000} 0 \cdot \frac{1}{20000} dq = ((b-p)q +q^2/2|^p_0 = bp-p^2/2  \]
+        \item Buyer maximizes this with respect to price which gives FOC:
+        \[\frac{dU}{dp} = b - p =0 \implies b^*=p\]
+        \item So Perfect Bayesian Equilibrium is buyer sets price $p$, sellers sell if $p\geq q$.
+    \end{wideitemize}
+\end{frame}
+\begin{frame}{The Market for Lemons: Hidden Type Solution}
+
+\begin{wideitemize}
+    \item The optimal price is given by:
+    \[p^* = b\]
+    \item Then the cars that are sold are those with $q\in [0,b]$.
+    \item Only the worst cars sell: there is adverse selection (more on this soon).
+    \item As the gains from trade ($b$) fall the probability of a transactions shrinks to 0.
+    \item Notice that if the seller set the price this game would be much more complicated! 
+    \item We would need to consider how the buyer updates their belief about quality after seeing the price the seller posts.
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Comments on Hidden Types}
+\begin{wideitemize}
+    \item In our example, the inability of the buyer to know the type of the seller leads to market failure.
+    \begin{definition}
+    An economic interaction exhibits \textbf{adverse selection} if one side has more information than the other side, and the informed party uses this information to selectively participate in trades in a way that reduces the utility of the other party.
+    \end{definition}
+    \item Example: Spence job-market, ``Ban the Box," can you think of others?
+    \item This is an especially prominent issue with insurance. See the recommended problem set!
+    \begin{definition}
+    \textbf{Adverse selection in insurance} refers to the phenomenon that risky types are more likely to accept insurance policies and are also more expensive to serve.
+    \end{definition}
+    \item This was a main concern with Obamacare! (stay tuned for next lecture)
+\end{wideitemize}
+
+    
+\end{frame}
+\end{document}
+

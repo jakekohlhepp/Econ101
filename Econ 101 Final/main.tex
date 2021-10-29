@@ -1,0 +1,175 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts }
+ \usepackage[margin=1in]{geometry}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+  ]{biblatex}
+\addbibresource{bib.bib}
+ \usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+ \linespread{1.25}
+\usepackage{float}
+\usepackage{multirow, array}
+\usepackage{amssymb}
+\newcommand*{\titlefoot}{$\dagger$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\newtheorem{definition}{Definition}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\begin{document}
+\title{Econ 101 Summer Session C Final}
+\author{Instructor: Jacob Kohlhepp}
+\date{\today}
+
+\maketitle
+
+\section{Instructions}
+\begin{itemize}
+    \item You have until 3:05 PM PST to complete this test.
+    \item Please keep your camera on but audio off.
+    \item The midterm is open note but \textbf{you may not communicate with other classmates or with any sort of online tutoring service.} Doing so is academic dishonesty and will be reported to the dean of students.
+    \item Please either hand write the exam or write using a stylus. Do not type the exam and number all pages. \textbf{And please box all answers}.
+    \item Simplify expressions as much as possible.
+    \item There is a 15 minute grace period after the exam finishes (until 3:20 PM PST) to submit your PDF to CCLE. Every minute an exam is late will result in a 5 point deduction from your score, no exceptions.
+    \item Thank you for a great summer session!
+\end{itemize}
+
+\section{Test Questions}
+
+
+\begin{enumerate}
+ 
+     \item  \textbf{Cournot with different costs.} Consider a Cournot duopoly (only two firms) with inverse demand given by $p=2-Q$. The cost function of firm 1 is given by $c_1(q)=(r/2) \cdot q^2$ and the cost function of firm 2 is given by $c_2(q)=q$, where $r>2$.
+     
+     \pagebreak
+     
+     \begin{enumerate}
+     
+      \item  Write down the NE quantity and profits. Denote them with a subscript NE (like $q_1^{NE}$). For this question only, you may write down the answer without showing any work. (6 points)
+      
+      
+      \vspace{6cm}
+      
+      
+      \item Now suppose the firms could form a cartel to cooperate. Find the quantities a cartel would produce if it maximized the sum of profits. Calculate profits for each firm. Denote all quantities and profits with a star, like $q_1^*$. (6 points)
+      
+    \vspace{6cm}
+    
+Now suppose the firms are engaged in an infinitely repeated game, with common discount factor $\delta$. Every period they engage in quantity competition.
+
+    \item Describe a grim trigger strategy that could be used to achieve $\pi^{*}_1, \pi^{*}_2$. (6 points)
+    
+   \vspace{3cm}
+    
+      \pagebreak
+    
+    \item Find the most profitable deviation of each firm when the other firm is producing the collusive quantity from part b. Find the profit from these deviations and call them $\pi_1^{dev}, \pi_2^{dev}$. (6 points)
+    
+    \vspace{6cm}
+    
+    \item In terms of $\pi_1^{dev}, \pi_2^{dev}, \pi^{*}_1, \pi^{*}_2, \pi^{NE}_1, \pi^{NE}_2, \delta$ write down the inequalities that must be satisfied to support $q_1^*, q_2^*$ as a subgame perfect Nash equilibrium. You do not need to substitute in the expressions. Explain what the inequalities represent. (6 points)
+    
+\vspace{4cm}
+    
+
+     \end{enumerate}
+     
+      \item \textbf{Video game development.} A firm needs to setup a production line for its video game console. In order to do this, the firm (F) must buy a operating system license from a supplier (S). The supplier can provide the license at 0 cost. At $t=1$, the firm decides whether to partner with the supplier or not. If F does, they incur setup cost $K$ and their console will only work with the supplier's operating software. If they do not, both F and S get $0$. At $t=2$ both see the demand for the console and then S sets the one-time license fee $f$ for the operating system. At $t=3$, the firm decides whether to pay the fee or produce nothing. If they produce nothing they pay only the setup cost $K$. Besides the one-time fee $f$ and setup cost $K$ (both fixed costs) there are no production costs for the console. Demand is $a-p$. We will solve for an SPNE.
+      
+      \pagebreak
+      
+      \begin{enumerate}
+          \item Suppose the firm partnered up with the supplier, $a$ is known, and $f$ is set. Solve for the optimal console price $p$ as a function of $a$. Find profit. Above what license fee $f$ will the firm produce nothing? (5 points)
+          
+       \vspace{6cm}
+       
+          \item Now consider $t=2$. Given your answer to part a, what is the supplier's best-response fee? (5 points)
+          
+          \vspace{3cm}
+          
+          
+
+          \item Now consider $t=1$. For what values of $K$ will the firm partner with the supplier? (5 points)
+          
+          \vspace{4cm}
+           
+          \item Given your answers to a-c, write down the SPNE strategies of both players assuming $K>0$.  (5 points)
+          
+         \vspace{4cm}
+          
+          \pagebreak
+          
+        \item Consider an imaginary world where the firm produced an operating system at 0 cost but still needed to incur the setup cost $K$. For what values of $K$ does the firm move forward with developing the console? (5 points)
+        
+       \vspace{6cm}
+        
+        
+        \item Relate the last part of d and the last part of e to the concept of \textit{vertical integration}. Feel free to look up the term on Google. (5 points)
+          
+       \vspace{4cm}
+       
+      \end{enumerate}
+
+        \item \textbf{Superbowl Ads.} I strongly recommend doing this problem last. A firm wishes to sell a product to a market of buyers and it is the only seller. The firm can produce the good at 0 cost. Before the beginning of the game, nature moves and the product is either high quality with probability $p>0$ or low quality with probability $1-p$. The firm knows the product's quality, but the buyers do not.
+      
+      The firm moves first, and can choose to buy a SuperBowl ad for $x$ dollars or not buying an ad. Buying an ad we denote as $a=1$ and not buying as $a=0$. If the product is good quality, the firm has more investors and can pay for the ad upfront. If the product is bad quality the firm must take out a loan at an interest rate $r$. So low quality firms have to pay $1+r$ times the cost of the ad. After observing either an ad or no ad, the customers update their belief. Finally, the firm chooses price, taking customer beliefs as given. Consumers choose to buy if willingness to pay is greater than price minus their belief about product quality after observing the firm's ad choice:
+      
+      \[w\geq p-b(a) \]
+      
+       $b(a)$ is the probability that the product is good quality given whether the firm buys an ad ($a=1$) or not ($ad=0$).  That is:
+       \[b(a) = Pr(\text{High quality} | ad = a)\]
+       
+       For example, $b(1)$ is the belief after seeing an ad, and $b(0)$ is the belief after not. If $b(1)=1$, this means consumers think the product is high quality for sure after seeing an ad. Normalize the amount of consumers to 1 as in class.
+      
+      \begin{enumerate}
+          \item Start with the last stage of the game. Treat $b(a)$ as already determined (just a number), derive demand as a function of $b(a)$ and $p$ when willingness to pay $w$ is uniform between 0 and 3. Hint: Just treat the price as $p-b(a)$ and use the steps from the monopoly lecture. (2 points)
+          
+        \vspace{6cm}
+
+          \item Still taking $b(a)$ as a given, and assuming production costs are 0, find the optimal price and profit as a function of $b(a)$. How does profit depend on believed quality $b(a)$? Hint: the firm faces no competition, so it is a... (4 points)
+          
+         \pagebreak
+         
+          
+          \item Find a pooling equilibrium where both types of firm run a Super Bowl ad. Make sure to specify beliefs of the consumers after each action. (10 points)
+          
+         \vspace{10cm}
+        
+          
+          \item Find a separating equilibrium where each type of firm plays a different ad strategy. Suppose that a low quality firm must strictly prefer not to imitate the high quality firm in a separating equilibrium. Write down two inequalities that guarantee this is a perfect Bayesian equilibrium. Are there values of $x,r$ where they are both satisfied? \footnote{Hint: one inequality must be strict.} (10 points)
+          
+          \vspace{8cm}
+          
+        \pagebreak
+        
+        Last Page!
+        \vspace{5cm}
+        
+          \item Suppose $r=0$. Based on your prior answers, explain what you think will happen in equilibrium. Relate this to the Spence signaling model from class. How is education like advertising? How is it different?(4 points)
+\vspace{5cm}
+          
+          
+      \end{enumerate}
+      
+      
+      
+\end{enumerate}
+
+
+
+
+
+
+
+\end{document}

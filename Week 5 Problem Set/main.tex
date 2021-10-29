@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts }
+ \usepackage[margin=1in]{geometry}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+  ]{biblatex}
+\addbibresource{bib.bib}
+ \usepackage[margin=1in]{geometry}
+\usepackage[doublespacing]{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multirow, array}
+\usepackage{amssymb}
+\newcommand*{\titlefoot}{$\dagger$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\newtheorem{definition}{Definition}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\begin{document}
+\title{Week 5 Recommended Problem Set}
+\author{Jacob Kohlhepp}
+\date{\today}
+
+\maketitle
+
+This problem set will help you understand the next (non-tested) lecture. It includes problems that are harder than what will be on the final exam. However, they are problems that use concepts we have learned, so in that sense they are doable, and if you can do them they are a good indication that you are more than ready for the test.
+\begin{enumerate}
+    \item \textbf{Moral Hazard in Health Insurance.} We will first explore how hidden action problems impact the health insurance market. This example is very similar to the manager and shareholders example from lecture, so reviewing that example will help solve this.
+    
+    Consider a single risk-averse individual deciding whether to buy health insurance for a year and a single risk-neutral, profit maximizing health insurance company deciding what plan to offer this individual. The insurance company designs an insurance plan, which is a deductible ($a$) that the patient pays regardless of what happens and a copay ($b$) which is a percentage of the treatment cost that the patient pays if treatment is needed. 
+    
+    The patient can exert effort ($E$) to take precautions (not smoking, exercising) and to self-treat (putting on a band-aid, bed-rest, taking Tylenol from CVS, etc) at personal effort cost $c(E)=e^2$. Medical care costs ($h$) depends on effort but is still random. Specifically it is a normal random variable with mean $T-e$ and variance $\sigma^2$, where $T$ is a positive constant. The patients is risk averse, and their utility from health costs is exponential $\frac{1-exp(-\theta h)}{\theta}$. $exp$ means Euler's number $e$ to the power of, but since I used the letter e for effort I cannot use $e$ for Euler's number. \footnote{Hint: Since this is exponential utility and a normal lottery we will need to use our handy equation from the first lecture!} Expected utility as a function of effort is then:
+    \[U(E) = E[\frac{1-e^{-\theta h}}{\theta}] - e^2\]
+    where the expectation is taken over healthcare costs.
+    
+    \begin{enumerate}
+        \item[a.] Take a second to map this example to the hidden action example from lecture. What are the similarities? The differences?
+        
+        \item[b.] Follow the steps from lecture to write utility in a mean-variance form without any expectations. You should get this as the below expression, which you will use over and over again throughout this problem.
+         \[U(e) = a-b(T-e) - \frac{\theta b^2\sigma^2}{2} - e^2\]
+         
+         \item[c.] If the patient does not buy insurance, they bear all medical costs out of pocket. Derive the utility as a function of effort when they do not buy insurance. Then find the optimal effort when they do not have insurance. Hint: No insurance is equivalent to $b=1$ (100\% copay) and $a=0$ (no premium).
+         
+         
+         \item[d.] Suppose the insurance company could make an insurance plan based on effort. That is the insurance contract was based on $e$ and not $h$ and there is no uncertainty. Derive the optimal copay, deductible and level of effort in an SPNE. You can use the steps below or do it your own way. Hint: Variance is now $0$ so we can use the expression from part b with $\sigma^2=0$.
+         \begin{enumerate}
+             \item[i.] First step, backwards induct. Assume the person bought insurance so the premium is sunk. Now derive optimal effort given fixed copay.
+             \item[ii.] Plug the result from i. into utility from insurance. Write down an inequality that compares utility from insurance and utility without.
+             \item[ii.] The insurance company maximizes profit, so it will make the inequality an equality by making $a$ as high as possible. Solve for $a$ from the inequality turned equality from ii.
+             \item[iv.] Plug this $a$ into profit. Remember the insurance company receives the premium and pays $1-b$ percent of expenses so profit is $E[a-(1-b)N(T-e,\sigma^2)]=a-b(T-e)$.
+             \item[v.] Maximize profit with respect to $b$ (copay). Then you can get everything else by plugging in $b$. Feel free to leave $a$ expressed as a function of $b$.
+             
+         \end{enumerate}
+        
+        \item[e.] Now suppose the insurance company has to live in the real world and offer a plan that is based on healthcare costs not effort. Derive the optimal copay, deductible and level of effort in an SPNE. You can use the same 5 step process from part d, with the exception that now 
+        
+        \item[f.] Compare c and d. We say there is moral hazard if the choice of effort is less in reality (when plans are based on health care costs which are observable) than in a world without hidden action (when plans are based on effort which is not observable). Is there moral hazard?
+        
+        \item[g.] In the real world injuries and medical conditions incur emotional and physical pain even when they are treated. We did not really include this in our model. If we did, how do you think it would change the results? Would it increase or decrease moral hazard?
+    \end{enumerate}
+    
+    \item \textbf{Adverse Selection in Health Insurance.} We will now explore how hidden types impact the health insurance market. Suppose the population contains two types of individuals: those with a pre-existing condition ($E$) and those without one ($N$). The fraction of people with pre-existing conditions is $p$. Assume throughout that insurance plans are based on healthcare costs not effort. Thus you should reuse your work from part 1.e.
+    
+    \begin{enumerate}
+        \item[a.]  We will now add this new idea to part 1 using the parameter $T$ form the last problem. We will say that type $E$ people have a higher $T$: $T_E>T_N$. Interpret this in terms of the model. What does it mean to have a higher $T$?
+        
+         \item[b.] Suppose the insurance company knows and is allowed to offer plans based on whether people have pre-existing conditions. Using the formulas from the last question, compute the deductible, copay and effort for both types. Which elements of the plan differ? Which do not?
+         
+         
+        \item[c.] We assume for the rest of the problem that patients know before they buy insurance what type they are, but the insurance company does not. The insurance company must offer the same plan to both types of people. We know that the two people differ only through their $T$ values. Look back at part 1. Which plan details (premium, copay) depend on $T$? Which do not?
+        
+        \item[d.] Assume the insurance company uses the same copay value as in part 1. For what premium prices will those with pre-existing conditions buy insurance? For what premium prices will those without buy insurance? Hint: Use the result from 1.e. with different $T$ values. Remember that $b$ does not depend on $T$ so you do not need to plug it in explicitly.
+        
+        \item[e.] In the lecture notes we defined adverse selection in insurance. For what values of the premium is there adverse selection? (For what premiums do only those with pre-existing conditions insure?)
+        
+        % \item[f.] Recall that profit is $a-bE[h]=a-b(E[T|buy]-e)$. $E[T|buy]$ is the average $T$ among those who buy insurance. If everyone buys it is $pT_E+(1-p)T_N$. If only one group buys it is $T_E$ or $T_N$. Plug in $b$ and $e$ from part 1 into the profit equation. Compute profit for the highest premium such that everyone buys and the highest premium such that just those with pre-existing conditions buy. Which yields a higher profit when $T_E=100, T_N=50, \theta= 1, \sigma^2=1$? Will there be adverse selection?
+        
+        
+        
+    \end{enumerate}
+        
+\end{enumerate}
+
+Solutions will be posted at the beginning of the next week!
+
+
+
+
+
+\end{document}

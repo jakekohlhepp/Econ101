@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts }
+ \usepackage[margin=1in]{geometry}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+  ]{biblatex}
+\addbibresource{bib.bib}
+ \usepackage[margin=1in]{geometry}
+\usepackage[doublespacing]{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multirow, array}
+\usepackage{amssymb}
+\newcommand*{\titlefoot}{$\dagger$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\newtheorem{definition}{Definition}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\begin{document}
+\title{Week 3 Recommended Problem Set}
+\author{Jacob Kohlhepp}
+\date{\today}
+
+\maketitle
+
+\section{Product Differentiation/Spatial Competition}
+
+\begin{enumerate}
+    \item \textbf{Salop Circle (Circular City Model).} Consider a circular city, where there are $N > 1$ firms that are equally spaced on the edge of the city. All firms are identical, with constant marginal cost c. The city has a circumference of 1, and consumers are uniformly located around the circle. (Therefore you can think of consumers as uniformly located between $[0, 1]$ like in Hotelling except a consumer at point 0 is also at point 1). Suppose all consumers want to buy one product, and will always buy (they just need to decide who to buy from). Consumer utility from a store that is a distance t away with price p is:
+
+    \[u(p,t) = u-t^2 -p\]
+    \begin{enumerate}
+        \item[a.] We will try to solve this problem in small steps. We will solve for a symmetric equilibrium: one where all firms charge the same price, $p^*$. Take one of the firms and call it $i$. For small enough price differences firm $i$ only competes with the firms to the left and the right. Consider a firm to the left. In equilibrium, firm $i$ knows everyone else is pricing at $p^*$. Derive the distance $x$ from firm $i$ at which a consumer is indifferent between the firm to the left.
+        
+        \vspace{6cm}
+        
+        \item[b.] Given the distance of this indifferent consumer, what is the demand from the left? Hint: consumers are uniform, so distance is equal to demand.
+        
+        \vspace{2cm}
+        
+        \item[c.] Use the same process to derive demand from the right. Then sum demand from the left and right to get total demand for firm $i$. Hint: Since all firms are charging the same price and consumers are uniformly located is there any difference between the left and right?
+        
+        \vspace{6cm}
+        
+        \item[d.] Setup the profit maximization problem of firm $i$. Remember there is a constant marginal cost $c$.
+        
+        \vspace{3cm}
+        
+        \item[e.] Solve the profit maximization problem. Your solution should give you $p_i$ as a function of $p^*$.
+        
+        \vspace{6cm}
+        
+        \item[f.] Set $p_i=p^*$ and solve for the symmetric equilibrium price. Interpret your result.
+        
+        \vspace{4cm}
+        
+        \end{enumerate}
+\end{enumerate}
+
+\section{Sequential Games}
+
+\begin{enumerate}
+    
+    \item \textbf{Sequential Tragedy of the Commons.} Go back to Problem Set 2 and the tragedy of the commons question. Suppose everything about that problem is the same, except that player 1 moves first and then player 2 moves.
+    \begin{enumerate}
+        \item[a.] Draw the extensive form of the game (game tree).
+        
+        \vspace{6cm}
+        
+        \item[b.] Solve for the SPNE of the game using backwards induction.
+        
+        \vspace{6cm}
+        
+        \item[c.] Compute profit for firm 1 and firm 2. Some games are said to exhibit a ``first-mover advantage." Does this game?
+        
+        \vspace{4cm}
+        
+    \end{enumerate}
+    
+    \item \textbf{Stackelberg Competition.} This model is essentially a sequential version of the Cournot model. Use the same setup as the Cournot question from Problem Set 3, except assume there are two firms, $i=1,2$.
+    \begin{enumerate}
+        \item[a.] Solve the static or simultaneous Cournot Duopoly game either from scratch (for extra practice) or by using the formulas for Problem Set 2 that you already derived. Derive equilibrium profit.
+        
+        \vspace{6cm}
+        
+        \item[b.] Now suppose that firm 1 chooses quantity first and then firm 2 chooses quantity after observing firm 1. Describe the possible strategies of each firm. Hint: one firm can condition their strategy on the action of the other.
+        
+        \vspace{3cm}
+        
+        \item[c.] Based on your answer to b, who has more information to act on when setting quantity? I.e. who's strategy is a function v.s. whose strategy is just a number.
+        
+        \vspace{2cm}
+        
+        \item[d.] Suppose both firms play the simultaneous Cournot NE from part a, with the caveat that firm 2 produces the static NE quantity regardless of what firm 1 produces. Is this an NE of the sequential game? Why or why not?
+        
+        \vspace{4cm}
+        
+        \item[e.] Derive the subgame perfect Nash equilibrium of this game.
+        
+        \vspace{6cm}
+        
+        \item[f.] Why is the Cournot NE not an SPNE of the sequential game? Hint: non-credible threats.
+        
+        \vspace{4cm}
+        
+    \end{enumerate}
+    
+    \item \textbf{Salop Circle with Entry.} If you could not solve Salop Circle without entry, wait a week (until you get the answer to that problem) and then do this problem. Suppose we are in the circular city model like in Section 1 Question 1. Everything is the same. The only change: there is now a preliminary round of the game where firms decide whether or not to enter. Suppose there are an infinite number of potential firms. Firms decide whether to enter or not, and this determines $N$. If firms do not enter they make $0$ profit. If firms do enter they pay an entry cost $e$ and then the game proceeds as before. Like before, firms do not choose their location: they are equally spaced along the circle.
+    \begin{enumerate}
+        \item[a.] The game is now sequential. We wish to solve for a subgame perfect Nash equilibrium. If we consider only symmetric strategies in the pricing round, what price will the firms charge as a function of N? Hint: you should be able to reuse your work.
+        
+        \vspace{6cm}
+        
+        \item[b.] Under this strategy, derive the profit of a firm given the number of other entrants.
+        
+        \vspace{4cm}
+    
+   With this in hand, we can solve the entry round game. Consider only pure strategies, where each firm either enters or not, and if they enter they must pay the entry cost. If they do not enter they receive payoff of 0. Since all firms are identical prior to entry, our goal is just to solve for the number of firms that enter ($N$).
+   
+        \item[c.] Argue that profit cannot be negative in any equilibrium. Hint: Show a profitable deviation among either the firms that are entering or those that are not.
+        
+        \vspace{4cm}
+        
+        \item[d.] Argue that profit cannot be so large that if one more firm entered it remains positive. Hint: Show a profitable deviation among either the firms that are entering or those that are not.
+        
+        \vspace{4cm}
+        
+        \item[e.] Solve for the equilibrium number of firms, $N^*$. It is okay to let $N$ be a fraction.
+        
+        \vspace{4cm}
+        
+        \item[f.] Compute the decimal value of $N$ from part e when $e=0.01$. To get the ``true" value of N, that is $N^*$, should we round down or up? Hint: think about your answer to d.
+        
+        
+        \vspace{4cm}
+        
+    \end{enumerate}
+\end{enumerate}
+Solutions will be posted at the beginning of the next week!
+
+
+
+
+
+\end{document}

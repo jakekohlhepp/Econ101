@@ -1,0 +1,175 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts }
+ \usepackage[margin=1in]{geometry}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+  ]{biblatex}
+\addbibresource{bib.bib}
+ \usepackage[margin=1in]{geometry}
+\usepackage[doublespacing]{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amssymb}
+\newcommand*{\titlefoot}{$\dagger$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\newtheorem{definition}{Definition}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\begin{document}
+\title{Week 1 Recommended Problem Set}
+\author{Jacob Kohlhepp}
+\date{\today}
+
+\maketitle
+
+\section{Risk and Choice Under Uncertainty}
+\begin{enumerate}
+    \item \textbf{Risky Crops in Developing Countries.} In development economics, researchers observed that poor farmers tended not to adopt new crops even though these new crops yielded higher expected harvests and thus more money on average than the subsistence crops. Even when the new crops were free, farmers did not switch. Some initially thought this was irrational. We will show in this exercise why it actually can be quite rational. The issue is risk.
+    
+    % \textbf{Setup.} Consider a farmer with utility function given by $u(x)$. The farmer can choose two crops. Corn (a subsistence crop) has yield given by lottery $X_{corn}$ which is uniform $U[0.5, 1]$ or rice (a cash or high expected yield crop) with yield given by lottery $X_{rice}$ which is also uniform $U[0.25,2]$.
+    
+    Consider a farmer with utility function given by $u(x)$. The farmer can choose two crops. Corn (a subsistence crop) has a yield given by lottery $X_{corn}$ or rice (a cash or high expected yield crop) with yield given by lottery $X_{rice}$. $X_{corn}$ is $4$ with probability $0.25$ and $3$ with probability $0.75$. $X_{rice}$ is $10$ with probability $0.4$ and $0$ with probability $0.6$. \color{blue} Edit: when the rice lottery has an outcome of 0, this generates an undefined utility. This means the certainty equivalent does not exist, and the farmer prefers basically any lottery that gives above 0.  To fix this, assume that: $X_{rice}$ is $10$ with probability $0.4$ and $0.0001$ with probability $0.6$.
+    \color{black}
+    
+         For a-c, suppose the farmer has utility function $u(x)=4x$
+     \begin{itemize}
+
+        \item[a.]  Is the farmer risk neutral, risk loving, or risk neutral?
+        
+        \vspace{2cm}
+        
+        \item[b.] What are the certainty equivalents of $X_{corn}$ and $X_{rice}$?
+        
+         \vspace{5cm}
+         
+        \item[c.] Which crop will the farmer choose?
+        
+        \vspace{2cm}
+        
+    For d-g, suppose the farmer is risk averse with utility function:
+    \[u(x) = \frac{x^{1-\theta}}{1-\theta}, \theta>1 \]
+    \item[d.] Is the farmer risk neutral, risk loving, or risk neutral? Hint: Take second derivative.
+    
+    \vspace{3cm}
+    
+    \item[e.] What are the certainty equivalents of $X_{corn}$ and $X_{rice}$ in terms of $\theta$?
+    
+    \vspace{5cm}
+    
+    \item[f.] Suppose $\theta=3$. Which crop will the farmer choose?
+
+    \vspace{3cm}
+    
+    \end{itemize}
+    
+    \textbf{Main Idea:} It turns out that risk aversion is driving farmers not to adopt the better crops. This can be fixed by providing crop insurance or subsidies.
+    \item \textbf{Subsidies, Fines and Crop Insurance.} Consider a simpler version of the last setup. There is a farmer with utility $u(x)=-x^{-3}/3$ who can choose between corn with a yield of $2$ for sure and rice with a yield $X_{rice}$ which yields $1$ with probability $0.5$ and $4$ with probability $0.5$.
+    \begin{enumerate}
+        \item[a.] Derive the certainty equivalent of each crop. What is special about the certainty equivalent of corn?
+        
+        \vspace{4cm}
+        
+        \item[b.] Without any interventions, which crop will the farmer choose?
+        
+        \vspace{2cm}
+        
+        
+        \item[c.] Suppose the government fines farmers who select corn. What size fine $f$ makes the farmer indifferent between corn and rice?
+        
+        \vspace{4cm}
+        
+        
+        \item[d.] Suppose the government can give a subsidy to farmers who select rice. What size subsidy $s$ makes the farmer indifferent between corn and rice?
+        
+        \vspace{4cm}
+        
+        
+        \item[e.] Suppose the government provides free crop insurance to the farmer for rice, where the farmer receives $z$ dollars when she chooses rice and rice yields $1$. Thus rice now yields $1+z$ with probability $0.5$ and $4$ with probability $0.5$. What value fo $z$ makes farmers indifferent between the two crops?
+        
+        \vspace{4cm}
+        
+        \item[f.] Suppose farmers choose rice when they are indifferent. Is it cheaper on average for the government to provide a subsidy like in part d or crop insurance like in e? Hint: for crop insurance, the government pays $z$ half the time and 0 the other half. With the subsidy the government pays $s$ for sure.
+        
+        \vspace{4cm}
+        
+    \end{enumerate}
+\end{enumerate}
+
+
+\section{Monopoly}
+\begin{enumerate}
+    \item \textbf{Monopoly with Exponential Demand}. In lecture we solved the monopoly model with linear demand. We then showed that we can derive a linear demand curve from a uniform consumer willingness to pay. Assume that production cost is constant marginal cost: $c(q)=c\cdot q$. 
+    
+    We will now derive a different demand curve. Instead of uniform willingness to pay, suppose consumers' willingness to pay takes an exponential form:
+    \[f(w) = \lambda e^{-\lambda w}, w\geq 0\]
+    So willginess to pay starts at 0 and goes to infinity. Remember that consumers buy if their own willingness to pay is greater than the price.\footnote{ Also the exponential distribution Wikipedia page is helpful for this problem. If you have taken 41, demand is equal to 1-CDF of an exponential random variable.} Also remember that to get demand we need to ``sum up" all the consumers with willingness to pay greater than price. Because there are infinite consumers (a continuum of consumers) we ``sum" by integrating:
+    \[d(p) = \int_p^{\infty} f(w)dw\]
+    
+    so $f(w)$ is loosely speaking the amount of consumers at each willingness to pay.
+    
+    \begin{enumerate}
+        \item[a.] Derive demand with this willingness to pay and call it $d(p)$. That is, find the fraction of consumers that buy given a positive price $p$. Then derive inverse demand and call it $p(q)$. Hint: You should get $d(p)=e^{-\lambda p}$.
+        
+        \vspace{4cm}
+        
+        \item[b.] Derive the price elasticity of demand. Hint: remember that this is given by the formula:
+        \[e_p = \frac{d Q(p)}{p} \frac{p}{Q(p)}\]
+        \vspace{2cm}
+        
+        \item[c.] How does $\lambda$ impact the elasticity of demand? Give an interpretation of $\lambda$.
+        
+        \vspace{2cm}
+        
+        \item[d.] Setup the monopolist's profit maximization problem. Solve the monopolist's profit maximization problem to derive monopoly quantity, price and profit.
+        
+        \vspace{5cm}
+        
+        
+        \item[e.] Derive the price and quantity under perfect competition. Plot the monopoly and perfect competition outcomes on a graph with the marginal cost, marginal revenue (under monopoly), and inverse demand.
+        
+        \vspace{6cm}
+        
+        
+        \item[f.] Derive consumer surplus (see lecture notes for formula) as a function of $\lambda$ under monopoly. Derive consumer surplus under perfect competition. Divide monopoly consumer surplus by perfect competition consumer surplus. How does the ratio depend on $\lambda$? What is the interpretation? (See N\&S 14.3 for inspiration).\footnote{It may be helpful to recall that $\lim_{x \to 0} x log(x)=0$.}
+        
+        \vspace{5cm}
+        
+    \end{enumerate}
+    \item \textbf{Monopoly and Price Discrimination (This problem is very hard. It is okay if you cannot complete it entirely).} Price discrimination refers to the practice of selling different individuals the same product for different prices. For this problem we will use the same willingness to pay and cost function as the last problem.
+    \begin{enumerate}
+        \item[a.] Suppose the monopolist can engage in perfect price discrimination. That is, it knows every consumer's willingness to pay and can charge every consumer a different price. What is the optimal price schedule as a function of willingness to pay? Hint:The firm will find some consumers unprofitable to sell to.
+        
+        \vspace{4cm}
+        
+        \item[b.] Under this price schedule, derive quantity and profit of the monopolist.\footnote{For profit remember that $\int \lambda w e^{-\lambda w} = -\frac{e^{-\lambda w}(\lambda w +1)}{\lambda} $.} Also, derive consumer surplus.
+        
+        \vspace{4cm}
+        
+        \item[c.] Suppose the monopolist can engage in third-degree price discrimination. That is, it does not know each consumer's willingness to pay, but it can segment the market into ``high rollers" (those with willingness to pay above 2) and ``bargain shoppers" (everyone else). Derive the inverse demands for the two markets.
+        
+        \vspace{4cm}
+        
+        \item[d.] (Hard) Compute the optimal price or quantity for each market. You can leave your answer as an equation if it does not simplify.
+        
+        \vspace{4cm}
+        
+    \end{enumerate}
+\end{enumerate}
+
+Solutions will be posted at the beginning of the next week!
+
+
+
+
+\end{document}

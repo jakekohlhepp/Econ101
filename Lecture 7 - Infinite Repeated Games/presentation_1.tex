@@ -1,0 +1,334 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{threeparttable}
+\usepackage{lscape}
+\usepackage{import}
+\usepackage{multirow, array}
+\usepackage{amsmath}
+\usepackage{csvsimple}
+\usepackage{siunitx}
+\usepackage{subfigure}
+\usepackage{filecontents}
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\usepackage{appendixnumberbeamer}
+\usepackage{float}
+\usepackage{amsmath}  
+\usepackage{tikz,pgfplots}
+\usepackage{tkz-fct}
+\usepackage{amsthm}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+\newcommand{\vertLineFromPoint}[1]{
+  \draw[dashed] 
+  (#1) -- (#1|-{rel axis cs:0,0})
+}
+\newcommand{\horLineFromPoint}[1]{
+  \draw[dashed] 
+  (#1) -- (#1-|{rel axis cs:0,0})
+}
+\mode<presentation> {
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes} -
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen} -
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester} -
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+\setbeamertemplate{footline}[frame number] % To replace the footer line in all slides with a simple slide count uncomment this line
+\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+  \setbeamertemplate{enumerate items}[default]
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+%\usepackage {tikz}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{definition*}{Definition}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newtheorem*{assumption}{Assumption}
+\usetikzlibrary {positioning}
+% macro for inputting terminal nodes
+\newcommand\term[2]{\node[below]at(#1){$#2$};}
+%
+%\usepackage {xcolor}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Infinite]{Lecture 7: Infinite Repeated Games} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Jacob Kohlhepp} % Your name
+\institute[UCLA] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Econ 101 \\ % Your institution for the title page
+\medskip
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{wideitemize}
+    \item Last Lecture: sequential play introduces interesting forces in economic models.
+    \item Today: what if the same game is played infinitely many times?
+    \item Because players know they will always see each other again, this introduces new forces.
+
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Applications}
+\begin{wideitemize}
+    \item How do OPEC countries sustain high oil prices (above the Cournot oligopoly level).
+    \item How do employers motivate employees without performance pay?
+    \item How do people sustain economic relationships in situations or places where there is no rule of law?
+    \item How do we model reputation or relationships?
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Some Additional Tools: Discounting}
+
+\begin{wideitemize}
+    \item Main solution concept remains \textbf{subgame-perfect Nash equilibrium.}
+    \item But because payoffs are infinite sums, they will be unbounded unless they are discounted.
+    \begin{definition}
+    The discount factor represents the value of 1 util tomorrow if it is provided today. It is always between 0 and 1, and with it we can write the present utility from a stream of utilities $\{u_t\}$ as:
+    \[U = \sum^\infty_{t=0} \delta^t u_t = u_0 + \delta u_1+\delta^2 u_2+...\]
+    \end{definition}
+    \item Interpretations:
+    \begin{enumerate}
+        \item The time value of money means that cash today is more valuable than cash tomorrow because we can always put it into a savings account. Therefore the interest rate drives the discount rate.
+        \item $\delta$ can represent the probability players meet again (uncertainty about the future).
+    \end{enumerate}
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Some Additional Tools: Infinite Sums}
+Suppose we want to evaluate $\sum^\infty_{t=0} \delta^t u $, where $u$ is some constant payoff. It is useful to remember that:
+
+\[\sum^\infty_{t=0} \delta^t u = \frac{u}{1-\delta} \]
+
+This will help us calculate the utility of receiving a payoff of $u$ every period forever, including today. If we want to evaluate the payoff of recieving $u$ every period forever (except for today) that would be:
+
+\[\sum^\infty_{t=1} \delta^t u = \frac{\delta u}{1-\delta} \]
+    
+\end{frame}
+
+\begin{frame}{Some Additional Tools: Stage Game }
+    \begin{definition}
+    The \textbf{stage game} is the subgame that is played each time period.
+    \end{definition}
+    
+   Suppose we consider a situation where two players play the prisoner's dilemma game every period for infinitely many periods. The stage game looks like:
+    \begin{table}
+    \setlength{\extrarowheight}{2pt}
+    \begin{tabular}{cc|c|c|}
+      & \multicolumn{1}{c}{} & \multicolumn{2}{c}{Player $1$}\\
+      & \multicolumn{1}{c}{} & \multicolumn{1}{c}{$Silent$}  & \multicolumn{1}{c}{$Betray$} \\\cline{3-4}
+      \multirow{2}*{Player $2$}  & $Silent$ & $(2,2)$ & $(0,3)$ \\\cline{3-4}
+      & $Betray$ & $(3,0)$ & $(1,1)$ \\\cline{3-4}
+    \end{tabular}
+  \end{table}
+  where the only NE is $(Betray, Betray)$ in the stage game.
+\end{frame}
+
+\begin{frame}{Considering Finitely Repeated Prisoner's Dilemma}
+    Suppose 2 players player prisoner's dilemma T times where $1<T<\infty$. What is the subgame perfect Nash equilibrium? Hint: Let's use backwards induction.
+\end{frame}
+\begin{frame}{Some Additional Tools: Trigger Strategies}
+
+\begin{wideitemize}
+    \item Now we wish to find an SPNE of the repeated prisoner's dilemma. To do this we will consider the following types of strategies.
+    
+    \begin{definition}
+A \textbf{trigger strategy} is one where a player initially cooperates until the other player deviates from cooperation, after which the player punishes the other player for a certain period of time.
+\end{definition}
+
+\item The most severe types of trigger strategies are called grim trigger strategies: they involve cooperating until one player defects. Then both players ``punish" each other for the rest of eternity.
+
+\item ``Punishment" usually refers to playing one of the static Nash Equilibria.
+\item In the case of the prisoner's dilemma it involves playing $(Betray, Betray)$.
+
+\end{wideitemize}
+
+\end{frame}
+
+\begin{frame}{Solving the Infinitely Repeated Prisoner's Dilemma}
+Suppose two players with the same discount factor $\delta$ play the prisoner's dilemma infinitely many times.
+\begin{wideitemize}
+    \item We wish to find an SPNE of the game where cooperation is sustained.
+    \item In PD, cooperation refers to sustaining the strategy $(Silent, Silent)$ which yields a higher payoff than the static NE of $(Betray, Betray)$
+    \item To do this, we need to come up with a strategy that supports $(Silent, Silent)$.
+    \item Let's try grim trigger: each player plays $Silent$ until they observe the other player $Betray$.
+    \item After the first $Betray$ both players play $Betray$ forever.
+\end{wideitemize}
+    
+\end{frame}
+
+\begin{frame}{Solving the Infinitely Repeated Prisoner's Dilemma}
+\begin{wideitemize}
+    \item We now need to check that grim trigger is indeed a PD.
+    \item Two conditions:
+    \begin{enumerate}
+        \item No player wants to Betray given no betrayal has occurred yet.
+        \item If a betrayal occurs, no player wants to play $Silent$.
+    \end{enumerate}
+    \item These are the only requirements for SPNE because of the following principle.
+    \begin{definition}
+    The \textbf{one-shot deviation principle} states that a strategy profile is a subgame-perfect Nash equilibrium if and only if no player can increase their payoff by changing a single decision in a single period. 
+    \end{definition}
+    \item Because players are symmetric in the prisoner's dilemma we only need to check for one player. 
+    \item There are two conditions because there are only two distinct subgames.
+    
+\end{wideitemize}
+\end{frame}
+
+\begin{frame}{Solving the Infinitely Repeated Prisoner's Dilemma}
+
+\begin{wideitemize}
+    \item We will now derive the two inequalities that these two conditions imply, and check when they are satisfied. (See handwritten notes). \pause
+    \item It turns out that these two conditions reduce to just one condition, which is that the gain from cooperating (future payoffs) is greater than the one-time gain from betrayal.
+    \item This holds whenever $\delta > 1/2$, that is whenever both players are sufficiently patient or forward looking.
+    \item This is surprising, because in any finite repeated prisoner's dilemma game (when we repeat the game $T<\infty$ times) the only SPNE is to both betray. (It is a good exercise to derive this yourself).
+    
+\end{wideitemize}
+
+
+\end{frame}
+
+\begin{frame}{Folk Theorem}
+
+The finding from the prisoner's dilemma, that we can support most outcomes in an infinitely repeated game given players are sufficiently patient, applies to many other games!
+\begin{theorem}
+The \textbf{Folk Theorem} states that in an infinitely repeated game with discounting, we can support any strategy which has strictly higher payoff than the minmax payoff\footnote{minmax payoff is the maximum payoff a player can garuntee him/herself given the other player is trying to give them the lowest payoff.} if $\delta$ is close enough to 1.
+\end{theorem}
+Intuition: With enough patience, virtually anything is possible with an infinite future.
+
+\end{frame}
+
+
+\begin{frame}{Comments}
+
+When I took this class as an undergraduate, this section of the class felt like dark magic. I hope these comments prove helpful.
+
+\begin{wideitemize}
+    \item Grim trigger is not the only way to sustain cooperation. There are many others, including tit-for-tat (see problem set).
+    \item Infinitely repeated games are hard to understand because they infinite sequences of occurrences.
+    \item More complicated infinitely repeated games that involve signals and other things are actual the cutting edge of economic theory.
+    \item Some of the best uses of these repeated games are in political science.
+    \item Grim trigger is a useful way to understand the Cold War policy of mutually assured destruction (MAD).
+\end{wideitemize}
+    
+\end{frame}
+\begin{frame}{Main Application: Collusion in Quantities}
+\begin{wideitemize}
+    \item $N$ oil producing countries with common discount factor $\delta$ and unit production cost of $c=10$.
+    \item $t=1,2,...$ (infinite periods).
+    \item Every period the countries simultaneously compete in quantities (they play a Cournot stage game).
+    \item Inverse market demand is given by $p = 50-\frac{Q}{100} $
+    \item Find the stage game NE, and the single period profit from this strategy.
+    \item Find the maximum achievable profit and the quantity that achieves it.
+    \item Use grim trigger with the stage NE as a punishment to support the maximum achievable profit.
+\end{wideitemize}
+See handwritten notes for solution.
+\end{frame}
+
+\begin{frame}{Collusion Solution  }
+
+\begin{wideitemize}
+    \item The condition needed to support the monopoly quantity is:
+    
+    \item Notice that this inequality becomes harder to support when $N$ (the number of countries) rises and when $\delta $ falls.
+    \item Interpretation: collusion is easier when there are fewer players and players are more patient.
+    \item N\&S call this \textbf{tacit collusion} because there is no explicit association between countries - repeated interaction organically supports collusion.
+    \item I prefer to think of this as a relational cartel: oil producing countries forming an alliance based on future profits.
+    \item This actually occurs in real life! OPEC keeps prices artificially high by jointly restricting supply.
+\end{wideitemize}
+    
+\end{frame}
+\end{document}
+
